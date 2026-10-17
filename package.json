@@ -1,0 +1,12 @@
+{
+  "name": "abdo-grocery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "بقالة عم عبده — متجر بقالة أونلاين (سيرفر Node بدون مكتبات خارجية)",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

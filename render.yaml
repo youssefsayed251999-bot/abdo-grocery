@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: abdo-grocery
+    runtime: node
+    plan: free
+    region: frankfurt
+    startCommand: node server/server.js
+    healthCheckPath: /
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false

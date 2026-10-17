@@ -1,0 +1,11 @@
+# ملفات لا تُرفع على الإنترنت أبدًا (فيها مفاتيح سرية أو بيانات محلية)
+server/.env
+**/server/.env
+**/.env
+**/.env.local
+server/data.json
+**/server/data.json
+node_modules/
+dist/
+*.log
+*.out

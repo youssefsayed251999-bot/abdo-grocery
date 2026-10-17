@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0f7b4f" />
+<title>بقالة عم عبده — تسوق أونلاين</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="description" content="بقالة عم عبده — كل حاجة ناقصة في بيتك: ألبان وأجبان، بقالة أساسية، أندومي ونودلز، مربى وعسل، مخبوزات ومشروبات ومنظفات... توصيل لحد الباب والدفع عند الاستلام." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&amp;display=swap" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<div id="app">
+  <!-- ===== Storefront shell ===== -->
+  <div id="shopShell" class="shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#/" data-action="nav" data-href="#/">
+          <span class="brand-logo" id="brandLogo">🏪</span>
+          <span class="brand-text">
+            <strong id="brandName">بقالة عم عبده</strong>
+            <small id="brandTagline">طازة كل يوم.. لحد باب بيتك</small>
+          </span>
+        </a>
+        <div class="topbar-actions">
+          <button class="icon-btn" data-action="nav" data-href="#/notifications" title="الإشعارات">
+            🔔<span class="badge" id="notifBadge" hidden>0</span>
+          </button>
+          <button class="icon-btn" data-action="nav" data-href="#/account" title="حسابي">👤</button>
+          <button class="admin-entry" id="adminEntry" data-action="nav" data-href="#/admin" title="لوحة التحكم" hidden>لوحة التحكم</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="view" class="view">
+      <div id="bootLoading" style="max-width:420px;margin:56px auto;text-align:center;color:#666;font-family:system-ui,\'Segoe UI\',Tahoma,sans-serif">
+        <div style="font-size:2.2rem">🛒</div>
+        <p style="line-height:1.9">جاري تحميل متجر بقالة عم عبده…</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-cols">
+        <div>
+          <h4 id="footerBrand">بقالة عم عبده</h4>
+          <p id="footerTagline">طازة كل يوم.. لحد باب بيتك</p>
+          <p class="muted" id="footerHours">يوميًا من 8 صباحًا حتى 12 منتصف الليل</p>
+        </div>
+        <div>
+          <h4>روابط سريعة</h4>
+          <a href="#/products" data-action="nav" data-href="#/products">كل المنتجات</a>
+          <a href="#/orders" data-action="nav" data-href="#/orders">تتبع طلبي</a>
+          <a href="#/messages" data-action="nav" data-href="#/messages">تواصل معنا</a>
+          <a href="#/notifications" data-action="nav" data-href="#/notifications">الإشعارات</a>
+        </div>
+        <div>
+          <h4>المساعدة</h4>
+          <a href="#" data-action="page" data-page="faq">الأسئلة الشائعة</a>
+          <a href="#" data-action="page" data-page="privacy">سياسة الخصوصية</a>
+          <a href="#" data-action="page" data-page="terms">الشروط والأحكام</a>
+          <a href="#" data-action="page" data-page="returns">الاسترجاع والشحن</a>
+        </div>
+        <div>
+          <h4>تواصل معنا</h4>
+          <a id="footerPhone" href="tel:01000000000" data-action="noop">📞 01000000000</a>
+          <a id="footerInstagram" href="#" target="_blank" rel="noopener">📷 إنستغرام</a>
+          <a id="footerMail" href="mailto:info@example.com">✉️ راسلنا</a>
+          <p class="muted">الدفع عند الاستلام متاح 💵</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> <span class="fb-name">بقالة عم عبده</span> — جميع الحقوق محفوظة.</span>
+        <span class="muted">صُنع كموقع ويب (PWA) قابل للتثبيت على الموبايل</span>
+      </div>
+    </footer>
+
+    <nav class="bottomnav">
+      <a href="#/" data-action="nav" data-href="#/" data-nav="home"><span>🏠</span>الرئيسية</a>
+      <a href="#/products" data-action="nav" data-href="#/products" data-nav="products"><span>🧺</span>المنتجات</a>
+      <a href="#/cart" data-action="nav" data-href="#/cart" data-nav="cart"><span>🛒</span>السلة<i class="cart-count" id="cartCount" hidden>0</i></a>
+      <a href="#/messages" data-action="nav" data-href="#/messages" data-nav="messages"><span>💬</span>الرسائل</a>
+      <a href="#/account" data-action="nav" data-href="#/account" data-nav="account"><span>👤</span>حسابي</a>
+    </nav>
+
+    <a class="fab-wa" id="fabWa" href="#" target="_blank" rel="noopener" title="تواصل معنا على واتساب">💬 واتساب</a>
+  </div>
+
+  <!-- ===== Admin shell ===== -->
+  <div id="adminShell" class="admin-shell" hidden>
+    <header class="admin-topbar">
+      <div class="admin-topbar-inner">
+        <div class="brand">
+          <span class="brand-logo">⚙️</span>
+          <span class="brand-text"><strong>لوحة التحكم</strong><small id="adminStoreName">بقالة عم عبده</small></span>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-btn" data-action="admin-notifs" title="تنبيهات لوحة التحكم">🔔<span class="badge" id="adminBellBadge" hidden>0</span></button>
+          <button class="ghost-btn" data-action="nav" data-href="#/">👁️ عرض المتجر</button>
+          <button class="ghost-btn" data-action="admin-logout">خروج</button>
+        </div>
+      </div>
+    </header>
+    <main id="adminView" class="admin-view"></main>
+  </div>
+</div>
+
+<!-- Toast + modal + sheet -->
+<div id="toasts" class="toasts"></div>
+<div id="modalRoot"></div>
+
+<!-- شبكة أمان: تمنع ظهور صفحة بيضا لو حصل أي خطأ غير متوقع أثناء التحميل -->
+<script>
+(function () {
+  var LAST_ERR = "";
+  function rendered() {
+    var a = document.getElementById("adminView");
+    if (a && a.children.length > 0) return true;
+    return !document.getElementById("bootLoading"); // شاشة التحميل اتشالت => التطبيق رسم
+  }
+  function showFallback() {
+    if (document.getElementById("bootFallback")) return;
+    var host = document.getElementById("view") || document.body;
+    var box = document.createElement("div");
+    box.id = "bootFallback";
+    box.style.cssText = "max-width:440px;margin:44px auto;padding:24px;text-align:center;font-family:system-ui,'Segoe UI',Tahoma,sans-serif;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)";
+    box.innerHTML =
+      '<div style="font-size:2.6rem">🛒</div>' +
+      '<h2 style="margin:6px 0">بقالة عم عبده</h2>' +
+      '<p style="line-height:1.9;color:#555">حصلت مشكلة مؤقتة أثناء فتح الموقع.<br>اضغط الزر لإعادة المحاولة.</p>' +
+      '<button id="bootReload" style="margin-top:10px;padding:12px 24px;border-radius:12px;border:none;background:#0f7b4f;color:#fff;font-size:1rem;cursor:pointer">إعادة التحميل 🔄</button>' +
+      (LAST_ERR ? '<p style="margin-top:10px;font-size:.72rem;color:#aaa;word-break:break-all">' + LAST_ERR + "</p>" : "");
+    host.appendChild(box);
+    var b = document.getElementById("bootReload");
+    if (b) b.onclick = function () { location.reload(); };
+  }
+  function check() {
+    var fb = document.getElementById("bootFallback");
+    if (rendered()) { if (fb && fb.parentNode) fb.parentNode.removeChild(fb); return; }
+    showFallback();
+  }
+  window.__bootCheck = check;
+  window.addEventListener("error", function (e) {
+    try {
+      if (e && e.target && e.target !== window && (e.target.tagName === "SCRIPT" || e.target.tagName === "LINK")) {
+        LAST_ERR = "فشل تحميل: " + (e.target.src || e.target.href || "");
+      } else if (e && e.message) {
+        LAST_ERR = e.message;
+      }
+    } catch (x) { }
+    setTimeout(check, 500);
+  }, true);
+  window.addEventListener("DOMContentLoaded", function () {
+    setTimeout(check, 4000);
+    setTimeout(check, 8000);
+  });
+  setTimeout(check, 5000);
+  setTimeout(check, 9000);
+})();
+</script>
+
+<script src="js/config.js"></script>
+<script src="js/seed.js"></script>
+<script src="js/product-images.js"></script>
+<script src="js/core.js"></script>
+<script src="js/api.js"></script>
+<script src="js/sync.js"></script>
+<script src="js/front.js"></script>
+<script src="js/boot.js"></script>
+</body>
+</html>
